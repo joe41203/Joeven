@@ -21,6 +21,24 @@ module Joeven
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
+    config.active_record.schema_format = :sql
+    config.generators do |g|
+      g.orm :active_record
+      g.template_engine :slim
+      g.test_framework :rspec, :fixture => true
+      g.fixture_replacement :factory_bot, :dir => 'spec/factories'
+      g.view_specs false
+      g.controller_specs true
+      g.routing_specs false
+      g.helper_specs false
+      g.request_specs false
+      g.stylesheets false
+      g.javascripts false
+      g.assets false
+      g.helper false
+    end
+    config.autoload_paths += %W(#{config.root}/lib)
+    config.autoload_paths += Dir['#{config.root}/lib/**/']
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
