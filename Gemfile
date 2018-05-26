@@ -63,3 +63,12 @@ gem 'slim-rails'
 group :development do
   gem 'html2slim'
 end
+
+group :development do
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-yarn'
+  gem 'capistrano3-unicorn'
+end
