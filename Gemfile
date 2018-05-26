@@ -45,3 +45,15 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+group :development, :test do
+  gem 'pry-rails'
+  gem 'pry-doc'
+  gem 'pry-state'
+  gem 'pry-coolline'
+  gem 'pry-byebug'
+  gem 'pry-stack_explorer'
+  gem 'awesome_print'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
