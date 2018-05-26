@@ -72,3 +72,7 @@ group :development do
   gem 'capistrano-yarn'
   gem 'capistrano3-unicorn'
 end
+
+group :development do
+  gem 'bullet'
+end
