@@ -1,7 +1,7 @@
 # awesome_print
 begin
-  require "awesome_print"
+  require 'awesome_print'
   Pry.config.print = proc { |output, value| output.puts value.ai }
 rescue LoadError
-  puts "no awesome_print :("
+  puts 'no awesome_print :('
 end
