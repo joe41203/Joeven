@@ -18,10 +18,12 @@ require 'factory_bot_rails'
 require 'simplecov'
 SimpleCov.start 'rails'
 RSpec.configure do |config|
-  FactoryBot.reload
-  FactoryBot.factories.clear
-  FactoryBot.sequences.clear
-  FactoryBot.find_definitions
+  config.before :all do
+    FactoryBot.reload
+    FactoryBot.factories.clear
+    FactoryBot.sequences.clear
+    FactoryBot.find_definitions
+  end
   config.include FactoryBot::Syntax::Methods
 
   # rspec-expectations config goes here. You can use an alternate
