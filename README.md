@@ -1,24 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## SETUP
+```
+$ brew upgrade rbenv ruby-build
+$ rbenv install 2.5.0
+$ rbenv local 2.5.0
+$ rbenv rehash
+$ gem install bundler
+$ bundle install --path vendor/bundle
+$ yarn install
+```
