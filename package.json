@@ -6,7 +6,6 @@
     "@rails/webpacker": "3.5",
     "babel-eslint": "^8.2.3",
     "babel-preset-react": "^6.24.1",
-    "bulma": "^0.7.1",
     "eslint": "^4.19.1",
     "eslint-plugin-class-property": "^1.1.0",
     "prop-types": "^15.6.1",
