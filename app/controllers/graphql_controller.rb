@@ -17,7 +17,7 @@ class GraphqlController < ApplicationController
   def ensure_hash(ambiguous_param)
     case ambiguous_param
     when String
-      parse_json_if_ambiguous_param_exist
+      parse_json_if_ambiguous_param_exist(ambiguous_param)
     when Hash, ActionController::Parameters
       ambiguous_param
     when nil
@@ -27,7 +27,7 @@ class GraphqlController < ApplicationController
     end
   end
 
-  def parse_json_if_ambiguous_param_exist
+  def parse_json_if_ambiguous_param_exist(ambiguous_param)
     return {} if ambiguous_param.blank?
     ensure_hash(JSON.parse(ambiguous_param))
   end
