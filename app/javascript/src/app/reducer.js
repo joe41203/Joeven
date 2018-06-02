@@ -1,3 +1,3 @@
 import { combineReducers } from 'redux';
-
-export default combineReducers({});
+import cosmeticLists from './CosmeticLists/redux/reducers';
+export default combineReducers({ cosmeticLists });

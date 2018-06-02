@@ -1,1 +1,7 @@
-export const API = {};
+export const API = {
+  cosmetics: {
+    get: {
+      all: '/cosmetics',
+    }
+  }
+};
