@@ -3,19 +3,8 @@ import { API } from 'endpoints';
 
 const { SET_COSMETICS, SEARCH_COSMETICS } = cosmetics;
 
-export const setCosmetics = payload => {
-  return {
-    type: SET_COSMETICS,
-    payload,
-  };
-};
-
-export const searchCosmetics = payload => {
-  return {
-    type: SEARCH_COSMETICS,
-    payload,
-  }
-}
+export const setCosmetics = payload => ({ type: SET_COSMETICS, payload });
+export const searchCosmetics = payload => ({ type: SEARCH_COSMETICS, payload });
 
 export const handleFetchCosmetics = () => {
   const url = API.cosmetics.get.all;
