@@ -5,7 +5,7 @@ class CosmeticsController < ApplicationController
   before_action :load_resources
 
   def index
-    return render json: search_results_json(params[:query]) if params[:query].present?
+    return render json: search_results_json if params[:query].present?
     return render json: fetch_redis_cosmetic_list_json if cache_exist?
     set_redis_cosmetic_list_json
     render json: fetch_redis_cosmetic_list_json
@@ -17,7 +17,7 @@ class CosmeticsController < ApplicationController
     @redis = Redis.new
   end
 
-  def search_results_json(query)
+  def search_results_json
     Cosmetic.search(params[:query]).records.to_a.to_json
   end
 
