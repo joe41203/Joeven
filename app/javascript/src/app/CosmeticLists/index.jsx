@@ -44,7 +44,7 @@ class CosmeticLists extends React.Component {
         </div>
         <div className="table">
           <p>Name</p>
-          <CosmeticList />
+          <CosmeticList search={query ? query : undefined} />
         </div>
       </div>
     ) : (
