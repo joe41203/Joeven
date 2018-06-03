@@ -21,6 +21,8 @@ gem 'slim-rails'
 gem 'dotenv-rails'
 gem 'whenever', require: false
 gem 'rubocop'
+gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: '5.x'
+gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: '5.x'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
