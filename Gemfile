@@ -37,7 +37,6 @@ group :development, :test do
   gem 'pry-coolline'
   gem 'pry-byebug'
   gem 'pry-stack_explorer'
-  gem 'awesome_print'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'rspec-rails'
