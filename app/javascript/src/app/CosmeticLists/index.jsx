@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { handleFetchCosmetics } from './redux/actions';
+import { handleFetchCosmetics, handleSearchCosmetics } from './redux/actions';
 
 class CosmeticLists extends React.Component {
   constructor(props){
   	super(props);
+    this.state = {
+      query: '',
+    }
   }
 
   componentDidMount = () => {
@@ -13,13 +16,36 @@ class CosmeticLists extends React.Component {
     handleFetchCosmetics()
   }
 
+  handleChangeQuery = query => this.setState({ query });
+  handleKeyPress = keyCode => {
+    const { handleSearchCosmetics } = this.props;
+    const { query } = this.state;
+    if (keyCode === 'Enter') {
+      handleSearchCosmetics(`${query}`)
+    }
+  }
+
   render() {
-    const { cosmetics } = this.props;
+    const { cosmetics, handleSearchCosmetics } = this.props;
+    const { query } = this.state;
 
     return (
       cosmetics ? (
         <div>
-          <table class="table">
+          <div className='control'>
+            <input
+              className='input'
+              type='text'
+              placeholder='Search Box'
+              onChange={(e) => this.handleChangeQuery(e.target.value)}
+              onKeyPress={(e) => this.handleKeyPress(e.key)}
+            />
+            <button
+              className='button is-primary'
+              onClick={() => handleSearchCosmetics(`${query}`)}
+            >Submit</button>
+          </div>
+          <table className='table'>
             <thead>
               <tr>
                 <th>Name</th>
@@ -54,4 +80,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { handleFetchCosmetics })(CosmeticLists);
+export default connect(mapStateToProps, { handleFetchCosmetics, handleSearchCosmetics })(CosmeticLists);

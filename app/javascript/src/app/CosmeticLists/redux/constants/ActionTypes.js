@@ -1,1 +1,4 @@
-export const cosmetics =  { SET_COSMETICS: 'SET_COSMETICS' }
+export const cosmetics =  {
+  SET_COSMETICS: 'SET_COSMETICS',
+  SEARCH_COSMETICS: 'SEARCH_COSMETICS',
+}

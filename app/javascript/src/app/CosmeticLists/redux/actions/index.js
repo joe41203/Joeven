@@ -1,14 +1,21 @@
 import { cosmetics } from '../constants/ActionTypes';
 import { API } from '../../../lib/endpoints';
 
-const { SET_COSMETICS } = cosmetics;
+const { SET_COSMETICS, SEARCH_COSMETICS } = cosmetics;
 
-export const setCospetics = payload => {
+export const setCosmetics = payload => {
   return {
     type: SET_COSMETICS,
     payload,
   };
 };
+
+export const searchCosmetics = payload => {
+  return {
+    type: SEARCH_COSMETICS,
+    payload,
+  }
+}
 
 export const handleFetchCosmetics = () => {
   const url = API.cosmetics.get.all;
@@ -16,7 +23,22 @@ export const handleFetchCosmetics = () => {
     fetch(url)
       .then(res => res.json())
       .then(res => {
-        dispatch(setCospetics(res));
+        dispatch(setCosmetics(res));
+      })
+      .catch(err => {
+        console.log('Err:', err);
+      });
+  };
+}
+
+export const handleSearchCosmetics = query => {
+  const url = API.cosmetics.get.all;
+  const mergedParamUrl = url.concat('?query=', query)
+  return dispatch => {
+    fetch(mergedParamUrl)
+      .then(res => res.json())
+      .then(res => {
+        dispatch(searchCosmetics(res));
       })
       .catch(err => {
         console.log('Err:', err);
