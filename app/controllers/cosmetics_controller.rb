@@ -3,15 +3,15 @@ class CosmeticsController < ApplicationController
 
   def index
     return render json: search_results_json if params[:query].present?
-    return render json: @redis_cosmetic.fetch_cosmetic_list_json if @redis_cosmetic.cache_exist?
-    @redis_cosmetic.set_cosmetic_list_json
-    render json: @redis_cosmetic.fetch_cosmetic_list_json
+    return render json: @cosmetic_store.fetch_cosmetic_list_json if @cosmetic_store.cache_exist?
+    @cosmetic_store.set_cosmetic_list_json
+    render json: @cosmetic_store.fetch_cosmetic_list_json
   end
 
   private
 
   def load_resources
-    @redis_cosmetic = Store::Cosmetic.new
+    @cosmetic_store = CosmeticStore.new
   end
 
   def search_results_json
