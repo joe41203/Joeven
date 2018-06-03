@@ -22,9 +22,15 @@ $ bundle exec rake elasticsearch:create_index
 $ bundle exec rake elasticsearch:import
 ```
 
+## SETUP redis
+```
+$ brew install redis
+```
+
 ## Start
 ```
 $ bundle exec rails s
 $ yarn dev
 $ elasticsearch
+$ redis-server
 ```
