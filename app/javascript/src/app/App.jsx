@@ -7,18 +7,6 @@ import gql from 'graphql-tag';
 
 const client = new ApolloClient();
 
-client
-  .query({
-    query: gql`
-      {
-        allCosmetics {
-          id
-          name
-        }
-      }
-    `
-  })
-  .then(result => console.log(result));
 class App extends Component {
   constructor(props) {
     super(props);
