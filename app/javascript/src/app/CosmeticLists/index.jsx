@@ -71,6 +71,7 @@ class CosmeticLists extends React.Component {
 
 CosmeticLists.propTypes = {
   handleFetchCosmetics: PropTypes.func,
+  handleSearchCosmetics: PropTypes.func,
   cosmetics: PropTypes.array,
 };
 
