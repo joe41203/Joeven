@@ -43,7 +43,7 @@ class CosmeticLists extends React.Component {
             <button
               className='button is-primary'
               onClick={() => handleSearchCosmetics(`${query}`)}
-            >Submit</button>
+            >SEARCH</button>
           </div>
           <table className='table'>
             <thead>

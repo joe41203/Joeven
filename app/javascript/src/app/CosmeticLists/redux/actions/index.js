@@ -1,5 +1,5 @@
 import { cosmetics } from '../constants/ActionTypes';
-import { API } from '../../../lib/endpoints';
+import { API } from 'endpoints';
 
 const { SET_COSMETICS, SEARCH_COSMETICS } = cosmetics;
 
@@ -33,7 +33,7 @@ export const handleFetchCosmetics = () => {
 
 export const handleSearchCosmetics = query => {
   const url = API.cosmetics.get.all;
-  const mergedParamUrl = url.concat('?query=', query)
+  const mergedParamUrl = url.concat('?query=', query);
   return dispatch => {
     fetch(mergedParamUrl)
       .then(res => res.json())
