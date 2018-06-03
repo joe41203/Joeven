@@ -1,5 +1,5 @@
 class Cosmetic < ApplicationRecord
-  include CosmeticSearchable
+  include ElasticSearch::CosmeticSearchable
 
   validates :name, presence: true
 end
