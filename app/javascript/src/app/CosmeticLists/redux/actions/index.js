@@ -42,7 +42,7 @@ export const handleSearchCosmetics = query => {
 export const handleCreateCosmetics = cosmetic_params => {
   const url = API.cosmetics.post.create;
   const method = 'POST';
-  const body = formData;
+  const body = cosmetic_params;
   const headers = {
     'Accept': 'image/jpeg, image/png',
     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
