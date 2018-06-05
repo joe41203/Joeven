@@ -8,7 +8,7 @@ export const searchCosmetics = payload => ({ type: SEARCH_COSMETICS, payload });
 export const createCosmetics = payload => ({ type: CREATE_COSMETICS, payload });
 
 export const handleFetchCosmetics = () => {
-  const url = API.cosmetics.get.all;
+  const url = API.cosmetics.get.index;
   return dispatch => {
     fetch(url)
       .then(res => res.json())
@@ -22,7 +22,7 @@ export const handleFetchCosmetics = () => {
 }
 
 export const handleSearchCosmetics = query => {
-  const url = API.cosmetics.get.all;
+  const url = API.cosmetics.get.index;
   const mergedParamUrl = url.concat('?query=', query);
   return dispatch => {
     fetch(mergedParamUrl)
