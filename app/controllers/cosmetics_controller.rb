@@ -8,6 +8,12 @@ class CosmeticsController < ApplicationController
     render json: @cosmetic_store.fetch_cosmetic_list_json
   end
 
+  def create
+    cosmetic = Cosmetic.new(cosmetic_params)
+    return render json: cosmetic if cosmetic.save
+    render json: { message: 'Error' }, status: 422
+  end
+
   private
 
   def load_resources
@@ -16,5 +22,9 @@ class CosmeticsController < ApplicationController
 
   def search_results_json
     Cosmetic.search(params[:query]).records.to_a.to_json
+  end
+
+  def cosmetic_params
+    params.permit(:name, images: [])
   end
 end
