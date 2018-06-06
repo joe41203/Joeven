@@ -40,15 +40,13 @@ export const handleSearchCosmetics = query => {
 // 1. name
 // 2. iamges
 export const handleCreateCosmetics = cosmetic_params => {
+  const { name, images } = cosmetic_params;
   const url = API.cosmetics.post.create;
-  const method = 'POST';
-  const body = cosmetic_params;
-  const headers = {
-    'Accept': 'image/jpeg, image/png',
-    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-  };
+  const formData = new FormData();
+  formData.append('name', name);
+  images.forEach(image => formData.append('images[]', image));
   return dispatch => {
-    fetch(url, { method, headers, body })
+    fetch(url, { method: 'POST', body: formData })
       .then(res => res.json())
       .then(res => {
         dispatch(createCosmetics(res));

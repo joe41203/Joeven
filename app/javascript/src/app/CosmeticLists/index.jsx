@@ -43,8 +43,6 @@ class CosmeticLists extends React.Component {
 
   handleNewCosmeticImage = image => {
     const images = this.state.newCosmetic.images;
-    // const formData = new FormData();
-    // formData.append('image', image);
     this.setState(
       Object.assign({}, this.state, {
         newCosmetic: Object.assign({}, this.state.newCosmetic, {

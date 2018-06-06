@@ -10,8 +10,8 @@ class CosmeticsController < ApplicationController
 
   def create
     cosmetic = Cosmetic.new(cosmetic_params)
-    return render json: cosmetic if cosmetic.save
-    render json: { message: 'Error' }, status: 422
+    return redirect_to cosmetics_path if cosmetic.save
+    redirect_to cosmetics_path, notice: 'something wrong'
   end
 
   private
