@@ -7,9 +7,9 @@ class Cosmetic < ApplicationRecord
 
   class <<  self
     def refresh_index!
-      self.__elasticsearch__.client.indices.delete index: self.index_name
-      self.__elasticsearch__.create_index! force: true
-      self.import
+      __elasticsearch__.client.indices.delete index: index_name
+      __elasticsearch__.create_index! force: true
+      import
     end
   end
 end
