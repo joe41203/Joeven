@@ -33,23 +33,23 @@ class CosmeticLists extends React.Component {
     }
   }
 
-  handleNewCosmeticName = name => this.setState(
-    Object.assign({}, this.state, {
-      newCosmetic: Object.assign({}, this.state.newCosmetic, {
-        name: name
-      })
-    })
-  )
+  handleNewCosmeticName = name => this.setState({
+    ...this.state,
+    newCosmetic: {
+      ...this.state.newCosmetic,
+      name,
+    }
+  })
 
   handleNewCosmeticImage = image => {
     const images = this.state.newCosmetic.images;
-    this.setState(
-      Object.assign({}, this.state, {
-        newCosmetic: Object.assign({}, this.state.newCosmetic, {
-          images: [...images, image]
-        })
-      })
-    )
+    this.setState({
+      ...this.state,
+      newCosmetic: {
+        ...this.state.newCosmetic,
+        images: [...images, image]
+      }
+    })
   }
 
   render() {
