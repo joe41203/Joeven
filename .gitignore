@@ -28,3 +28,4 @@ yarn-debug.log*
 
 /vendor/bundle
 /coverage/
+/.env

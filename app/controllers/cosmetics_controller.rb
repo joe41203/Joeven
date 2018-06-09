@@ -1,20 +1,35 @@
 class CosmeticsController < ApplicationController
-  before_action :load_resources
+  before_action :_load_resources
 
   def index
-    return render json: search_results_json if params[:query].present?
-    return render json: @cosmetic_store.fetch_cosmetic_list_json if @cosmetic_store.cache_exist?
+    return render json: _search_results_json if params[:query].present?
+    return render json: @cosmetic_store.fetch_cosmetic_list_json if @cosmetic_store.cosmetic_list_cache_exist?
     @cosmetic_store.set_cosmetic_list_json
     render json: @cosmetic_store.fetch_cosmetic_list_json
   end
 
-  private
-
-  def load_resources
-    @cosmetic_store = CosmeticStore.new
+  def create
+    return render json: CosmeticSerializer.new(@cosmetic).serialize if @cosmetic.save
+    render json: { message: 'something wrong' }, status: :unprocessable_entity
   end
 
-  def search_results_json
-    Cosmetic.search(params[:query]).records.to_a.to_json
+  private
+
+  def _load_resources
+    case action_name.to_sym
+    when :index
+      @cosmetic_store = CosmeticStore.new
+    when :create
+      @cosmetic = Cosmetic.new(_cosmetic_params)
+    end
+  end
+
+  def _search_results_json
+    cosmetics = Cosmetic.search(params[:query]).records(includes: [images_attachments: :blob]).to_a
+    CosmeticSerializer.new(cosmetics).serialize
+  end
+
+  def _cosmetic_params
+    params.permit(:name, images: [])
   end
 end

@@ -1,13 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { handleFetchCosmetics, handleSearchCosmetics } from './redux/actions';
+import {
+  handleFetchCosmetics,
+  handleSearchCosmetics,
+  handleCreateCosmetics,
+} from './redux/actions';
 
 class CosmeticLists extends React.Component {
   constructor(props){
   	super(props);
     this.state = {
       query: '',
+      newCosmetic: {
+        name: '',
+        images: [],
+      }
     }
   }
 
@@ -25,8 +33,27 @@ class CosmeticLists extends React.Component {
     }
   }
 
+  handleNewCosmeticName = name => this.setState({
+    ...this.state,
+    newCosmetic: {
+      ...this.state.newCosmetic,
+      name,
+    }
+  })
+
+  handleNewCosmeticImage = image => {
+    const images = this.state.newCosmetic.images;
+    this.setState({
+      ...this.state,
+      newCosmetic: {
+        ...this.state.newCosmetic,
+        images: [...images, image]
+      }
+    })
+  }
+
   render() {
-    const { cosmetics, handleSearchCosmetics } = this.props;
+    const { cosmetics, handleSearchCosmetics, handleCreateCosmetics } = this.props;
     const { query } = this.state;
 
     return (
@@ -49,6 +76,7 @@ class CosmeticLists extends React.Component {
             <thead>
               <tr>
                 <th>Name</th>
+                <th>Image</th>
               </tr>
             </thead>
             <tfoot>
@@ -57,12 +85,34 @@ class CosmeticLists extends React.Component {
                   return(
                     <tr key={`cosmetic-${i}`}>
                       <th>{`${cosmetic.name}`}</th>
+                      <th><img src={cosmetic.images[0]}/></th>
+
                     </tr>
                   )
                 })
               }
             </tfoot>
           </table>
+          <div>
+            <div className='control'>
+              <input
+                className='input'
+                type='text'
+                placeholder='Name'
+                onChange={e => this.handleNewCosmeticName(e.target.value)}
+              />
+              <input
+                className='input'
+                type='file'
+                placeholder='image'
+                onChange={e => this.handleNewCosmeticImage(e.target.files[0])}
+              />
+            <button
+              className='button is-primary'
+              onClick={() => handleCreateCosmetics(this.state.newCosmetic)}
+            >Submit</button>
+            </div>
+          </div>
         </div>
       ) : <div>HelloWorld</div>
     );
@@ -72,6 +122,7 @@ class CosmeticLists extends React.Component {
 CosmeticLists.propTypes = {
   handleFetchCosmetics: PropTypes.func,
   handleSearchCosmetics: PropTypes.func,
+  handleCreateCosmetics: PropTypes.func,
   cosmetics: PropTypes.array,
 };
 
@@ -81,4 +132,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { handleFetchCosmetics, handleSearchCosmetics })(CosmeticLists);
+export default connect(mapStateToProps, { handleFetchCosmetics, handleSearchCosmetics, handleCreateCosmetics })(CosmeticLists);
