@@ -9,7 +9,7 @@ class CosmeticsController < ApplicationController
   end
 
   def create
-    return render json: @cosmetic.to_json if @cosmetic.save
+    return render json: CosmeticSerializer.new(@cosmetic).serialize! if @cosmetic.save
     render json: { message: 'something wrong' }, status: :unprocessable_entity
   end
 
