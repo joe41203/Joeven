@@ -9,7 +9,7 @@ class CosmeticStore
 
   def set_cosmetic_list_json
     cosmetics = Cosmetic.with_included_image.limit(LIMIT)
-    @redis.set(REDIS_COSMETIC_LIST_KEY, CosmeticSerializer.new(cosmetics).serialize!)
+    @redis.set(REDIS_COSMETIC_LIST_KEY, CosmeticSerializer.new(cosmetics).serialize)
     @redis.expire(REDIS_COSMETIC_LIST_KEY, EXPIRED_TIME)
   end
 
