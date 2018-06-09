@@ -76,6 +76,7 @@ class CosmeticLists extends React.Component {
             <thead>
               <tr>
                 <th>Name</th>
+                <th>Image</th>
               </tr>
             </thead>
             <tfoot>
@@ -84,6 +85,8 @@ class CosmeticLists extends React.Component {
                   return(
                     <tr key={`cosmetic-${i}`}>
                       <th>{`${cosmetic.name}`}</th>
+                      <th><img src={cosmetic.images[0]}/></th>
+
                     </tr>
                   )
                 })

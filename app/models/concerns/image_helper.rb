@@ -8,20 +8,7 @@ module ImageHelper
     scope :with_included_image, -> { includes(images_attachments: :blob) }
   end
 
-  def image_path
-    images.map do |image|
-      _host_name + Rails.application.routes.url_helpers.rails_blob_url(image, only_path: true)
-    end
-  end
-
-  private
-
-  def _host_name
-    case Rails.env.to_sym
-    when :development
-      'localhost:3000'
-    when :production
-      'joeven.com'
-    end
+  def service_urls
+    images.map(&:service_url)
   end
 end

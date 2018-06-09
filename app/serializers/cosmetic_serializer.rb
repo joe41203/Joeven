@@ -3,7 +3,7 @@ class CosmeticSerializer
   attributes :id, :name
 
   attribute :images do |object, _params|
-    object.image_path
+    object.service_urls
   end
 
   def serialize!
