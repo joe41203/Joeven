@@ -9,19 +9,23 @@ class CosmeticsController < ApplicationController
   end
 
   def create
-    cosmetic = Cosmetic.new(cosmetic_params)
-    return render json: CosmeticSerializer.new(cosmetic).serialize! if cosmetic.save
+    return render json: @cosmetic.to_json if @cosmetic.save
     render json: { message: 'something wrong' }, status: :unprocessable_entity
   end
 
   private
 
   def load_resources
-    @cosmetic_store = CosmeticStore.new
+    case action_name.to_sym
+    when :index
+      @cosmetic_store = CosmeticStore.new
+    when :create
+      @cosmetic = Cosmetic.new(cosmetic_params)
+    end
   end
 
   def search_results_json
-    cosmetics = Cosmetic.search(params[:query]).records(includes: [images_attachments: :blob]).to_a
+    cosmetics = Cosmetic.search(params[:query]).records(includes: [images_attachment: :blob]).to_a
     CosmeticSerializer.new(cosmetics).serialize!
   end
 
