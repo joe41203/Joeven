@@ -9,7 +9,7 @@ class CosmeticsController < ApplicationController
   end
 
   def create
-    return render json: CosmeticSerializer.new(@cosmetic).serialize! if @cosmetic.save
+    return render json: CosmeticSerializer.new(@cosmetic).serialize if @cosmetic.save
     render json: { message: 'something wrong' }, status: :unprocessable_entity
   end
 
@@ -26,7 +26,7 @@ class CosmeticsController < ApplicationController
 
   def _search_results_json
     cosmetics = Cosmetic.search(params[:query]).records(includes: [images_attachments: :blob]).to_a
-    CosmeticSerializer.new(cosmetics).serialize!
+    CosmeticSerializer.new(cosmetics).serialize
   end
 
   def _cosmetic_params

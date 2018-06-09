@@ -6,7 +6,7 @@ class CosmeticSerializer
     object.service_urls
   end
 
-  def serialize!
+  def serialize
     return _serializable.map { |h| h[:attributes] }.to_json if _serializable.is_a?(Array)
     _serializable[:attributes].to_json
   end
