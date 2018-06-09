@@ -7,13 +7,13 @@ class CosmeticSerializer
   end
 
   def serialize!
-    return serializable.map { |h| h[:attributes] }.to_json if serializable.is_a?(Array)
-    serializable[:attributes].to_json
+    return _serializable.map { |h| h[:attributes] }.to_json if _serializable.is_a?(Array)
+    _serializable[:attributes].to_json
   end
 
   private
 
-  def serializable
+  def _serializable
     serializable_hash[:data]
   end
 end
