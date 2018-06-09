@@ -2,6 +2,7 @@ require 'elasticsearch/model'
 
 module CosmeticSearchable
   extend ActiveSupport::Concern
+  include Concerns::Reindex
 
   included do
     include Elasticsearch::Model
