@@ -1,7 +1,6 @@
 class Cosmetic < ApplicationRecord
   include CosmeticSearchable
-
-  has_many_attached :images
+  include ImageHelper
 
   validates :name, presence: true
 
