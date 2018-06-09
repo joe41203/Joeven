@@ -1,7 +1,10 @@
 export const API = {
   cosmetics: {
     get: {
-      all: '/cosmetics',
+      index: '/cosmetics',
+    },
+    post: {
+      create: '/cosmetics',
     }
   }
 };

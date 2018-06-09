@@ -24,6 +24,9 @@ gem 'whenever', require: false
 gem 'rubocop'
 gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: '5.x'
 gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: '5.x'
+gem 'aws-sdk-s3'
+gem 'fast_jsonapi'
+gem 'mini_magick'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -33,10 +36,10 @@ group :development, :test do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'pry-rails'
   gem 'pry-doc'
-  gem 'pry-state'
-  gem 'pry-coolline'
-  gem 'pry-byebug'
-  gem 'pry-stack_explorer'
+  # gem 'pry-state'
+  # gem 'pry-coolline'
+  # gem 'pry-byebug'
+  # gem 'pry-stack_explorer'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'rspec-rails'
