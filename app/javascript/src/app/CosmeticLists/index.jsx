@@ -6,6 +6,8 @@ import {
   handleSearchCosmetics,
   handleCreateCosmetics,
 } from './redux/actions';
+import SearchForm from './components/SearchForm';
+import CosmeticCard from './components/CosmeticCard';
 
 class CosmeticLists extends React.Component {
   constructor(props){
@@ -53,46 +55,25 @@ class CosmeticLists extends React.Component {
   }
 
   render() {
-    const { cosmetics, handleSearchCosmetics, handleCreateCosmetics } = this.props;
+    const { cosmetics, handleCreateCosmetics } = this.props;
     const { query } = this.state;
 
     return (
       cosmetics ? (
         <div>
-          <div className='control'>
-            <input
-              className='input'
-              type='text'
-              placeholder='Search Box'
-              onChange={(e) => this.handleChangeQuery(e.target.value)}
-              onKeyPress={(e) => this.handleKeyPress(e.key)}
-            />
-            <button
-              className='button is-primary'
-              onClick={() => handleSearchCosmetics(`${query}`)}
-            >SEARCH</button>
+          <SearchForm
+            handleChangeQuery={this.handleChangeQuery}
+            handleKeyPress={this.handleKeyPress}
+          />
+          <div className='columns is-multiline'>
+            {
+              cosmetics.map((cosmetic, i) => {
+                return(
+                  <CosmeticCard cosmetic={cosmetic} />
+                )
+              })
+            }
           </div>
-          <table className='table'>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Image</th>
-              </tr>
-            </thead>
-            <tfoot>
-              {
-                cosmetics.map((cosmetic, i) => {
-                  return(
-                    <tr key={`cosmetic-${i}`}>
-                      <th>{`${cosmetic.name}`}</th>
-                      <th><img src={cosmetic.images[0]}/></th>
-
-                    </tr>
-                  )
-                })
-              }
-            </tfoot>
-          </table>
           <div>
             <div className='control'>
               <input
