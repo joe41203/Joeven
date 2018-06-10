@@ -7,7 +7,7 @@ import {
   handleCreateCosmetics,
 } from './redux/actions';
 import SearchForm from './components/SearchForm';
-import CosmeticCard from './components/CosmeticCard';
+import CosmeticCards from './components/CosmeticCards';
 
 class CosmeticLists extends React.Component {
   constructor(props){
@@ -65,15 +65,7 @@ class CosmeticLists extends React.Component {
             handleChangeQuery={this.handleChangeQuery}
             handleKeyPress={this.handleKeyPress}
           />
-          <div className='columns is-multiline'>
-            {
-              cosmetics.map((cosmetic, i) => {
-                return(
-                  <CosmeticCard cosmetic={cosmetic} />
-                )
-              })
-            }
-          </div>
+          <CosmeticCards cosmetics={cosmetics}/>
           <div>
             <div className='control'>
               <input

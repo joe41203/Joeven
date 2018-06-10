@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const CosmeticCard = ({ cosmetic }) => {
   return(
-    <div className='column is-one-third'>
+    <div className='column is-one-quarter'>
       <div className='card large'>
         <div className='card-image'>
           <figure className='image'>
