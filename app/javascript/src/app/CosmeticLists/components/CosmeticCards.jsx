@@ -9,19 +9,17 @@ const CardsContainer = styled.div`
 
 const CosmeticCards = ({ cosmetics }) => {
   return(
-    <CardsContainer>
-      <div className='columns is-multiline'>
-        {
-          cosmetics.map((cosmetic, i) => {
-            return(
-              <CosmeticCard
-                key={`cosmetic-${i}`}
-                cosmetic={cosmetic}
-              />
-            )
-          })
-        }
-      </div>
+    <CardsContainer className='columns is-multiline'>
+      {
+        cosmetics.map((cosmetic, i) => {
+          return(
+            <CosmeticCard
+              key={`cosmetic-${i}`}
+              cosmetic={cosmetic}
+            />
+          )
+        })
+      }
     </CardsContainer>
   )
 }
