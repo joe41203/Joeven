@@ -8,6 +8,7 @@ import {
 } from './redux/actions';
 import SearchForm from './components/SearchForm';
 import CosmeticCards from './components/CosmeticCards';
+import NewCosmeticForm from './components/NewCosmeticForm';
 
 class CosmeticLists extends React.Component {
   constructor(props){
@@ -66,26 +67,12 @@ class CosmeticLists extends React.Component {
             handleKeyPress={this.handleKeyPress}
           />
           <CosmeticCards cosmetics={cosmetics}/>
-          <div>
-            <div className='control'>
-              <input
-                className='input'
-                type='text'
-                placeholder='Name'
-                onChange={e => this.handleNewCosmeticName(e.target.value)}
-              />
-              <input
-                className='input'
-                type='file'
-                placeholder='image'
-                onChange={e => this.handleNewCosmeticImage(e.target.files[0])}
-              />
-            <button
-              className='button is-primary'
-              onClick={() => handleCreateCosmetics(this.state.newCosmetic)}
-            >Submit</button>
-            </div>
-          </div>
+          <NewCosmeticForm
+            handleNewCosmeticName={this.handleNewCosmeticName}
+            handleNewCosmeticImage={this.handleNewCosmeticImage}
+            handleCreateCosmetics={handleCreateCosmetics}
+            newCosmetic={this.state.newCosmetic}
+          />
         </div>
       ) : <div>HelloWorld</div>
     );

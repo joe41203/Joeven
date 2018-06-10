@@ -14,7 +14,10 @@ const CosmeticCards = ({ cosmetics }) => {
         {
           cosmetics.map((cosmetic, i) => {
             return(
-              <CosmeticCard cosmetic={cosmetic} />
+              <CosmeticCard
+                key={`cosmetic-${i}`}
+                cosmetic={cosmetic}
+              />
             )
           })
         }
