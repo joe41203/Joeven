@@ -81,7 +81,7 @@ module.exports = {
           resolve: {
             extensions: ['.js', '.jsx', '.json'],
             modules: [
-              path.resolve(__dirname, 'app/javascript/src/app/lib'),
+              path.resolve(__dirname, 'app/javascript/src/app/**'),
               path.resolve(__dirname, 'node_modules'),
               path.resolve(__dirname, 'app/assets'),
             ],
